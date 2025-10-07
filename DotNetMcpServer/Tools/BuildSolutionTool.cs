@@ -5,7 +5,14 @@ namespace DotNetMcpServer.Tools
 {
     public class BuildSolutionTool : IMcpTool
     {
-        public string Name => "BuildSolution";
+        public string Name => "dotnet_build";
+        public string Title => "Build .NET Solution";
+        public string Description => "Builds a .NET solution using the dotnet CLI.";
+
+        public Dictionary<string, string> InputSchema => new()
+        {
+            { "solutionPath", "string" }
+        };
 
         public async Task<McpResult> ExecuteAsync(McpContext context)
         {
@@ -16,7 +23,7 @@ namespace DotNetMcpServer.Tools
             return new McpResult
             {
                 Success = process.ExitCode == 0,
-                Data = new { ExitCode = process.ExitCode },
+                Data = new { process.ExitCode },
                 Message = process.ExitCode == 0 ? "Build succeeded" : "Build failed"
             };
         }

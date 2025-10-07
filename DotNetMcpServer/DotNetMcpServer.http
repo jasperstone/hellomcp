@@ -1,14 +1,25 @@
 @DotNetMcpServer_HostAddress = http://127.0.0.1:5244
 
-POST {{DotNetMcpServer_HostAddress}}/mcp/execute
-Accept: */*
+### Get OpenAPI JSON
+GET {{DotNetMcpServer_HostAddress}}/swagger/v1/swagger.json
+
+### MCP init (exchange client/server info)
+POST {{DotNetMcpServer_HostAddress}}/initialize
 Content-Type: application/json
 
 {
-	"toolName": "BuildSolution",
-	"parameters": {
-		"solutionPath": "/workspaces/hellomcp/DotNetMcpServer"
-	}
+	"client": "my-client",
+	"capabilities": ["tools", "examples"]
 }
 
+### List available tools
+GET {{DotNetMcpServer_HostAddress}}/tools/list
+
+### Get metadata for a specific tool (BuildSolution)
+GET {{DotNetMcpServer_HostAddress}}/tools/get/dotnet_build
+
 ###
+GET {{DotNetMcpServer_HostAddress}}/resources/list
+
+###
+GET {{DotNetMcpServer_HostAddress}}/prompts/list

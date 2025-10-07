@@ -5,7 +5,16 @@ namespace DotNetMcpServer.Tools
 {
     public class GetCoverageReportTool : IMcpTool
     {
-        public string Name => "GetCoverageReport";
+        public string Name => "report_coverage";
+
+        public string Title => "Get Coverage Report";
+
+        public string Description => "Retrieves code coverage report from a specified file.";
+
+        public Dictionary<string, string> InputSchema => new()
+        {
+            { "reportPath", "string" }
+        };
 
         public async Task<McpResult> ExecuteAsync(McpContext context)
         {

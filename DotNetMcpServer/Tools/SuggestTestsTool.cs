@@ -4,7 +4,16 @@ namespace DotNetMcpServer.Tools
 {
     public class SuggestTestsTool : IMcpTool
     {
-        public string Name => "SuggestTests";
+        public string Name => "suggest_tests";
+
+        public string Title => "Suggest Tests";
+
+        public string Description => "Suggests unit tests for given method names.";
+
+        public Dictionary<string, string> InputSchema => new()
+        {
+            { "methodNames", "List<string>" }
+        };
 
         public async Task<McpResult> ExecuteAsync(McpContext context)
         {

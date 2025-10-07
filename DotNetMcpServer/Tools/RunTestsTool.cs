@@ -5,7 +5,16 @@ namespace DotNetMcpServer.Tools
 {
     public class RunTestsTool : IMcpTool
     {
-        public string Name => "RunTests";
+        public string Name => "dotnet_test";
+
+        public string Title => "Run Tests";
+
+        public string Description => "Runs tests for a specified .NET test project.";
+
+        public Dictionary<string, string> InputSchema => new()
+        {
+            { "testProjectPath", "string" }
+        };
 
         public async Task<McpResult> ExecuteAsync(McpContext context)
         {
