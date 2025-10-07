@@ -25,6 +25,10 @@ var tools = new List<IMcpTool>
 app.UseSwagger();
 app.UseSwaggerUI();
 
+// Prevent 404 on a GET / probe from clients/extensions by providing a simple root route.
+// Redirect to the Swagger UI
+app.MapGet("/", () => Results.Redirect("/swagger"));
+
 // MCP initialization endpoint — exchange client/server info
 app.MapPost("/initialize", (Dictionary<string, object> clientInfo) =>
 {
@@ -67,7 +71,7 @@ app.MapPost("/tools/call", async (McpContext context) =>
 });
 
 // resources and prompts endpoints (placeholders)
-app.MapGet("/resources/list", () => Results.Json(new object[0]));
-app.MapGet("/prompts/list", () => Results.Json(new object[0]));
+app.MapGet("/resources/list", () => Results.Json(Array.Empty<object>()));
+app.MapGet("/prompts/list", () => Results.Json(Array.Empty<object>()));
 
 app.Run();

@@ -1,0 +1,10 @@
+{
+    "chat.mcp.serverSampling": {
+        "hellomcp/.vscode/mcp.json: 0": {
+            "allowedModels": [
+                "copilot/gpt-4.1",
+                "copilot/auto"
+            ]
+        }
+    }
+}

@@ -44,6 +44,12 @@ The workspace includes `.vscode/mcp.json` which contains a `servers` array with 
 
 Some Copilot Chat or MCP-aware tools will look for this file to auto-discover local MCP/OpenAPI servers. If your Copilot Chat instance runs in the same devcontainer, it can read this file and connect automatically. If Copilot Chat runs remotely, you must expose the local server (for example with `ngrok`) and update `mcp.json` with the public URL.
 
+## Dependabot
+
+This repository includes a Dependabot configuration (`.github/dependabot.yml`) which enables automated dependency update pull requests for configured package ecosystems (for example, NuGet). Dependabot will open PRs to keep dependencies up to date and can be configured to run on a schedule, ignore specific packages, or group updates.
+
+See `.github/dependabot.yml` for the current policy and adjust settings there if you want different update behavior.
+
 ## View Swagger UI
 After starting the server, open the Swagger UI in your browser:
 
