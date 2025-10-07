@@ -1,0 +1,14 @@
+@DotNetMcpServer_HostAddress = http://127.0.0.1:5244
+
+POST {{DotNetMcpServer_HostAddress}}/mcp/execute
+Accept: */*
+Content-Type: application/json
+
+{
+	"toolName": "BuildSolution",
+	"parameters": {
+		"solutionPath": "/workspaces/hellomcp/DotNetMcpServer"
+	}
+}
+
+###
